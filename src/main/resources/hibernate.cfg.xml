@@ -18,7 +18,7 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
 
-        <mapping class="ru.job4j.caraccident.entity.User" />
+        <mapping class="ru.job4j.accident.entity.User" />
 
     </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package ru.job4j.caraccident.entity;
+package ru.job4j.accident.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
