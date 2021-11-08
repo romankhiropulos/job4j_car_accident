@@ -30,16 +30,23 @@
         </div>
         <div class="card-body">
             <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Названия</th>
-                </tr>
-                </thead>
+<%--                <thead>--%>
+<%--                <tr>--%>
+<%--                    <th scope="col">Названия</th>--%>
+<%--                </tr>--%>
+<%--                </thead>--%>
                 <tbody>
                 <c:forEach items="${accidents}" var="accident">
+                    <jsp:useBean id="accident" type="ru.job4j.accident.entity.Accident"/>
                     <tr>
                         <td>
-                            <c:out value="${accident}"/>
+                            <c:out value="${accident.name}"/>
+                        </td>
+                        <td>
+                            <c:out value="${accident.address}"/>
+                        </td>
+                        <td>
+                            <c:out value="${accident.text}"/>
                         </td>
                     </tr>
                 </c:forEach>
