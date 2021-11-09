@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
+<jsp:useBean id="accident" type="ru.job4j.accident.model.Accident" scope="request"/>
 <form  action="<c:url value='/update?id=${accident.id}'/>" method='POST'>
-<%--    <jsp:useBean id="accident" type="ru.job4j.accident.model.Accident"/>--%>
     <table>
         <tr>
             <td>ДТП:</td>
