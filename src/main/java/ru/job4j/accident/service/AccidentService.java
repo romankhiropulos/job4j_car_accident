@@ -27,4 +27,7 @@ public class AccidentService {
         storage.update(accident);
     }
 
+    public Accident getAccidentById(int id) {
+        return storage.getAccidentById(id);
+    }
 }

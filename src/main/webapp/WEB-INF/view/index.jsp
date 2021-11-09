@@ -42,7 +42,7 @@
                         <jsp:useBean id="accident" type="ru.job4j.accident.model.Accident"/>
                         <tr>
                             <td>
-                                <a href='<c:url value='/edit?id=${accident.id}'/>'>
+                                <a href='<c:url value='/update?id=${accident.id}'/>'>
                                     <i class="fa fa-edit mr-3"></i>
                                 </a>
                             </td>

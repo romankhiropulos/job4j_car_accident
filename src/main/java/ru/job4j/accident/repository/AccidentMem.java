@@ -28,6 +28,11 @@ public class AccidentMem implements Storage {
         accidents.put(accident.getId(), accident);
     }
 
+    @Override
+    public Accident getAccidentById(int id) {
+        return accidents.get(id);
+    }
+
     private void fillTestAccidents() {
         accidents.clear();
         Accident accident1 = new Accident(1, "Accident1", "Big mistake1", "street 1");
