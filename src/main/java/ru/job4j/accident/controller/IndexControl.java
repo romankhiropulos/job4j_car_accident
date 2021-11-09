@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.job4j.accident.entity.Accident;
-import ru.job4j.accident.repository.Storage;
+import ru.job4j.accident.model.Accident;
+import ru.job4j.accident.service.AccidentService;
 
 import java.util.List;
 
@@ -13,11 +13,11 @@ import java.util.List;
 public class IndexControl {
 
     @Autowired
-    Storage storage;
+    private AccidentService service;
 
     @GetMapping("/")
     public String index(Model model) {
-        List<Accident> accidents  = (List<Accident>) storage.getAllAccidents();
+        List<Accident> accidents  = (List<Accident>) service.getAllAccidents();
         model.addAttribute("accidents", accidents);
         return "index";
     }

@@ -1,7 +1,7 @@
 package ru.job4j.accident.repository;
 
 import org.springframework.stereotype.Repository;
-import ru.job4j.accident.entity.Accident;
+import ru.job4j.accident.model.Accident;
 
 import java.util.*;
 
@@ -10,9 +10,22 @@ public class AccidentMem implements Storage {
 
     private final Map<Integer, Accident> accidents = new HashMap<>();
 
-    public Collection<Accident> getAllAccidents() {
+    public AccidentMem() {
         fillTestAccidents();
+    }
+
+    public Collection<Accident> getAllAccidents() {
         return new ArrayList<>(accidents.values());
+    }
+
+    @Override
+    public void create(Accident accident) {
+        accidents.put(accident.getId(), accident);
+    }
+
+    @Override
+    public void update(Accident accident) {
+        accidents.put(accident.getId(), accident);
     }
 
     private void fillTestAccidents() {

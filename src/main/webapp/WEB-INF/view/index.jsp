@@ -23,38 +23,45 @@
 </head>
 <body>
 <div class="container pt-3">
-<div class="row">
-    <div class="card" style="width: 100%">
-        <div class="card-header">
-            Автокатастрофы
-        </div>
-        <div class="card-body">
-            <table class="table">
-<%--                <thead>--%>
-<%--                <tr>--%>
-<%--                    <th scope="col">Названия</th>--%>
-<%--                </tr>--%>
-<%--                </thead>--%>
-                <tbody>
-                <c:forEach items="${accidents}" var="accident">
-                    <jsp:useBean id="accident" type="ru.job4j.accident.entity.Accident"/>
-                    <tr>
-                        <td>
-                            <c:out value="${accident.name}"/>
-                        </td>
-                        <td>
-                            <c:out value="${accident.address}"/>
-                        </td>
-                        <td>
-                            <c:out value="${accident.text}"/>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+    <div class="row">
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+                Автокатастрофы
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <%--                <tr>--%>
+                    <%--                    <th scope="col">Названия</th>--%>
+                    <%--                </tr>--%>
+                        <a href="<c:url value='/create'/>">Добавить инцидент</a>
+                    </thead>
+                    <tbody>
+                    <br>
+                    <c:forEach items="${accidents}" var="accident">
+                        <jsp:useBean id="accident" type="ru.job4j.accident.model.Accident"/>
+                        <tr>
+                            <td>
+                                <a href='<c:url value='/edit?id=${accident.id}'/>'>
+                                    <i class="fa fa-edit mr-3"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <c:out value="${accident.name}"/>
+                            </td>
+                            <td>
+                                <c:out value="${accident.address}"/>
+                            </td>
+                            <td>
+                                <c:out value="${accident.text}"/>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
