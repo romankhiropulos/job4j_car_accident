@@ -4,9 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
+import ru.job4j.accident.model.Rule;
 import ru.job4j.accident.repository.Storage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class AccidentService {
@@ -22,7 +27,17 @@ public class AccidentService {
         return storage.getAllAccidentTypes();
     }
 
-    public void create(Accident accident) {
+    public Collection<Rule> getAllRules() {
+        return storage.getAllRules();
+    }
+
+    public void create(Accident accident, String[] rIds) {
+        accident.setType(storage.getAccidentTypeById(accident.getType().getId()));
+        Set<Rule> rules = storage.getAllRules()
+                .stream()
+                .filter(r -> Arrays.asList(rIds).contains(String.valueOf(r.getId())))
+                .collect(Collectors.toSet());
+        accident.setRules(rules);
         storage.create(accident);
     }
 

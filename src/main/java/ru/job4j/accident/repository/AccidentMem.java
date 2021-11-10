@@ -3,6 +3,7 @@ package ru.job4j.accident.repository;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
+import ru.job4j.accident.model.Rule;
 
 import java.util.*;
 
@@ -13,9 +14,12 @@ public class AccidentMem implements Storage {
 
     private final Map<Integer, AccidentType> accidentTypes = new HashMap<>();
 
+    private final Map<Integer, Rule> rules = new HashMap<>();
+
     public AccidentMem() {
         fillTestAccidents();
         fillTestAccidentTypes();
+        fillTestAccidentRules();
     }
 
     @Override
@@ -29,10 +33,14 @@ public class AccidentMem implements Storage {
     }
 
     @Override
+    public Collection<Rule> getAllRules() {
+        return new ArrayList<>(rules.values());
+    }
+
+    @Override
     public void create(Accident accident) {
         if (accident.getId() == 0) {
             accident.setId(new Date().getSeconds());
-            accident.setType(getAccidentTypeById(accident.getType().getId()));
         }
         accidents.put(accident.getId(), accident);
     }
@@ -60,5 +68,11 @@ public class AccidentMem implements Storage {
         accidentTypes.put(1, AccidentType.of(1, "Две машины"));
         accidentTypes.put(2, AccidentType.of(2, "Машина и человек"));
         accidentTypes.put(3, AccidentType.of(3, "Машина и велосипед"));
+    }
+
+    private void fillTestAccidentRules() {
+        rules.put(1, Rule.of(1, "Статья. 1"));
+        rules.put(2, Rule.of(2, "Статья. 2"));
+        rules.put(3, Rule.of(3, "Статья. 3"));
     }
 }
