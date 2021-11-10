@@ -7,7 +7,6 @@ import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.repository.Storage;
 
 import java.util.Collection;
-import java.util.Date;
 
 @Service
 public class AccidentService {
@@ -24,13 +23,11 @@ public class AccidentService {
     }
 
     public void create(Accident accident) {
-        accident.setId(new Date().getSeconds());
-        accident.setType(storage.getAccidentTypeById(accident.getType().getId()));
         storage.create(accident);
     }
 
     public void update(Accident accident) {
-        storage.update(accident);
+        storage.create(accident);
     }
 
     public Accident getAccidentById(int id) {

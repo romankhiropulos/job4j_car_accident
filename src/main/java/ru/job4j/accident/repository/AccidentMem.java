@@ -30,11 +30,10 @@ public class AccidentMem implements Storage {
 
     @Override
     public void create(Accident accident) {
-        accidents.put(accident.getId(), accident);
-    }
-
-    @Override
-    public void update(Accident accident) {
+        if (accident.getId() == 0) {
+            accident.setId(new Date().getSeconds());
+            accident.setType(getAccidentTypeById(accident.getType().getId()));
+        }
         accidents.put(accident.getId(), accident);
     }
 

@@ -13,8 +13,6 @@ public interface Storage {
 
     void create(Accident accident);
 
-    void update(Accident accident);
-
     Accident getAccidentById(int id);
 
     AccidentType getAccidentTypeById(int id);
