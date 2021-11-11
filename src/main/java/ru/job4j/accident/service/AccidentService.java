@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
-import ru.job4j.accident.repository.Storage;
+import ru.job4j.accident.repository.AccidentJdbcTemplate;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
@@ -17,7 +16,7 @@ import java.util.stream.Collectors;
 public class AccidentService {
 
     @Autowired
-    private Storage storage;
+    private AccidentJdbcTemplate storage;
 
     public Collection<Accident> getAllAccidents() {
         return storage.getAllAccidents();

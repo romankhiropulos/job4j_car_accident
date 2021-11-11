@@ -14,7 +14,7 @@ public interface Storage {
 
     Collection<Rule> getAllRules();
 
-    void create(Accident accident);
+    Accident create(Accident accident);
 
     Accident getAccidentById(int id);
 
