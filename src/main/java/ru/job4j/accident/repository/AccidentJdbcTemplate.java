@@ -68,7 +68,13 @@ public class AccidentJdbcTemplate implements Storage {
     @Override
     public Accident getAccidentById(int id) {
         return jdbc.queryForObject(
-                "SELECT * FROM accident a LEFT JOIN accident_type at ON a.type_id = at.id"
+                "SELECT a.id as accident_id, "
+                        + " a.name as accident_name,"
+                        + " a.text as accident_text,"
+                        + " a.address as accident_address,"
+                        + " a.type_id as accident_type_id,"
+                        + " at.name as accident_type_name"
+                        + " FROM accident a LEFT JOIN accident_type at ON a.type_id = at.id"
                         + " WHERE a.id = ?",
                 accidentRowMapper,
                 id

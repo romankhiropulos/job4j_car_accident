@@ -31,20 +31,25 @@ public class AccidentService {
     }
 
     public void create(Accident accident, String[] rIds) {
+        prepareAccidentForSave(accident, rIds);
+        storage.create(accident);
+    }
+
+    public void update(Accident accident, String[] rIds) {
+        prepareAccidentForSave(accident, rIds);
+        storage.create(accident);
+    }
+
+    public Accident getAccidentById(int id) {
+        return storage.getAccidentById(id);
+    }
+
+    private void prepareAccidentForSave(Accident accident, String[] rIds) {
         accident.setType(storage.getAccidentTypeById(accident.getType().getId()));
         Set<Rule> rules = storage.getAllRules()
                 .stream()
                 .filter(r -> Arrays.asList(rIds).contains(String.valueOf(r.getId())))
                 .collect(Collectors.toSet());
         accident.setRules(rules);
-        storage.create(accident);
-    }
-
-    public void update(Accident accident) {
-        storage.create(accident);
-    }
-
-    public Accident getAccidentById(int id) {
-        return storage.getAccidentById(id);
     }
 }

@@ -55,6 +55,16 @@
                             <td>
                                 <c:out value="${accident.text}"/>
                             </td>
+                            <td>
+                                <c:out value="${accident.type.name}"/>
+                            </td>
+                            <td>
+                                <c:forEach items="${accident.rules}" var="rule">
+                                    <jsp:useBean id="rule" type="ru.job4j.accident.model.Rule"/>
+                                    <c:out value="${rule.name}"/>
+                                    <br/>
+                                </c:forEach>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

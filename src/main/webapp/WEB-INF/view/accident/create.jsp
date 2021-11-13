@@ -19,30 +19,10 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
+    <script src="accident.js"></script>
+
     <title>Accident create</title>
 
-    <script>
-        function validate() {
-            let valid = true;
-            let name = document.getElementById('name').value;
-            let address = document.getElementById('address').value;
-            let options = document.querySelectorAll('#rules option:checked');
-            let rules = Array.from(options).map(option => option.value) ;
-            if (name === '') {
-                valid = false;
-                alert("Пожалуйста заполните поле \"Название\"");
-            }
-            if (address === '') {
-                valid = false;
-                alert("Пожалуйста заполните поле \"Адрес\"");
-            }
-            if (rules.length === 0) {
-                valid = false;
-                alert("Пожалуйста заполните поле \"Статьи\"");
-            }
-            return valid;
-        }
-    </script>
 </head>
 <body>
 <form action="<c:url value='/save'/>" method='POST'>

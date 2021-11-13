@@ -38,12 +38,15 @@ public class AccidentControl {
     public String edit(@RequestParam int id, Model model) {
         Accident accident = service.getAccidentById(id);
         model.addAttribute("accident", accident);
+        model.addAttribute("types", service.getAllAccidentTypes());
+        model.addAttribute("rules", service.getAllRules());
         return "accident/edit";
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute Accident accident) {
-        service.update(accident);
+    public String update(@ModelAttribute Accident accident,  HttpServletRequest req) {
+        String[] rIds = req.getParameterValues("rIds");
+        service.update(accident, rIds);
         return "redirect:/";
     }
 }
