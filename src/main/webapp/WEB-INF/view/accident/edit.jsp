@@ -7,6 +7,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <%--    <script src="${pageContext.request.contextPath}/script/accidentScript.js"></script>--%>
+    <script>
+        function validate() {
+            let valid = true;
+            let name = document.getElementById('name').value;
+            let address = document.getElementById('address').value;
+            let options = document.querySelectorAll('#rules option:checked');
+            let rules = Array.from(options).map(option => option.value);
+            if (name === '') {
+                valid = false;
+                alert("Пожалуйста заполните поле \"Название\"");
+            }
+            if (address === '') {
+                valid = false;
+                alert("Пожалуйста заполните поле \"Адрес\"");
+            }
+            if (rules.length === 0) {
+                valid = false;
+                alert("Пожалуйста заполните поле \"Статьи\"");
+            }
+            return valid;
+        }
+    </script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -20,20 +44,18 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
-    <script src="accident.js"></script>
-
     <title>Accident edit</title>
 
 </head>
 <body>
 <jsp:useBean id="accident" type="ru.job4j.accident.model.Accident" scope="request"/>
-<form  action="<c:url value='/update?id=${accident.id}'/>" method='POST'>
+<form action="<c:url value='/update?id=${accident.id}'/>" method='POST'>
     <table>
         <tr>
             <td>ДТП:</td>
-            <td><input type='text' name='name' value="${accident.name}"></td>
-            <td><input type='text' name='address' value="${accident.address}"></td>
-            <td><input type='text' name='text' value="${accident.text}"></td>
+            <td><input type='text' name='name' value="${accident.name}" id="name"></td>
+            <td><input type='text' name='address' value="${accident.address}" id="address"></td>
+            <td><input type='text' name='text' value="${accident.text}" id="text"></td>
         </tr>
         <tr>
             <td>Тип:</td>
@@ -47,8 +69,8 @@
         <tr>
             <td>Статьи:</td>
             <td>
-                <select name="rIds" id="rules" multiple >
-                    <c:forEach var="rule" items="${rules}" >
+                <select name="rIds" id="rules" multiple>
+                    <c:forEach var="rule" items="${rules}">
                         <option value="${rule.id}">${rule.name}</option>
                     </c:forEach>
                 </select>

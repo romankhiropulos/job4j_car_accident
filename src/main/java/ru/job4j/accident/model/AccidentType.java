@@ -1,9 +1,25 @@
 package ru.job4j.accident.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "accident_type")
+@org.hibernate.annotations.NamedQueries({
+        @org.hibernate.annotations.NamedQuery(
+                name = "AccidentType_GetAll",
+                query = "select distinct ty from AccidentType ty"
+        ),
+        @org.hibernate.annotations.NamedQuery(
+                name = "AccidentType_FindById",
+                query = "select distinct ty from AccidentType ty"
+                        + " where ty.id = :accidentTypeId"
+        )
+})
 public class AccidentType {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;

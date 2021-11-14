@@ -19,6 +19,9 @@
         <property name="use_sql_comments">true</property>
 
         <mapping class="ru.job4j.accident.model.User" />
+        <mapping class="ru.job4j.accident.model.Rule" />
+        <mapping class="ru.job4j.accident.model.AccidentType" />
+        <mapping class="ru.job4j.accident.model.Accident" />
 
     </session-factory>
 </hibernate-configuration>

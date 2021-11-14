@@ -1,13 +1,14 @@
 package ru.job4j.accident.repository;
 
-import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
 
 import java.util.*;
 
-@Repository
+/**
+ *  This class can be @Repository instead of Accident Hibernate
+ */
 public class AccidentMem implements Storage {
 
     private final Map<Integer, Accident> accidents = new HashMap<>();
