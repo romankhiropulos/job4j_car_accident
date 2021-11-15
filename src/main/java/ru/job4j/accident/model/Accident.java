@@ -1,5 +1,7 @@
 package ru.job4j.accident.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
@@ -38,11 +40,13 @@ public class Accident {
 
     private String address;
 
+    @Fetch(FetchMode.JOIN)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id", foreignKey = @ForeignKey(name = "ACCIDENT_TYPE_ID_FKEY"))
     private AccidentType type;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "accident_rules",
             joinColumns = {@JoinColumn(name = "accident_id", nullable = false, updatable = false)},

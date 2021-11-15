@@ -3,7 +3,6 @@ package ru.job4j.accident.repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.model.Rule;
@@ -16,7 +15,6 @@ import java.util.function.Function;
  * Spring helped tie SessionFactory with AccidentHibernate.
  * That's all Spring has done here.
  */
-@Repository
 public class AccidentHibernate implements Storage {
 
     private final SessionFactory sf;
