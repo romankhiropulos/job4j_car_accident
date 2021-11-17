@@ -24,7 +24,7 @@ public class AccidentControl {
     public String create(Model model) {
         model.addAttribute("types", service.getAllAccidentTypes());
         model.addAttribute("rules", service.getAllRules());
-        return "resources/accident/create";
+        return "accident/create";
     }
 
     @PostMapping("/save")
@@ -40,7 +40,7 @@ public class AccidentControl {
         model.addAttribute("accident", accident);
         model.addAttribute("types", service.getAllAccidentTypes());
         model.addAttribute("rules", service.getAllRules());
-        return "resources/accident/edit";
+        return "accident/edit";
     }
 
     @PostMapping("/update")

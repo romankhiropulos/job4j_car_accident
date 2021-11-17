@@ -6,8 +6,29 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="/resources/accident/script/accident.js"></script>
-
+    <%--    <script src="/static/accident/script/accident.js"></script>--%>
+    <script>
+        function validate() {
+            let valid = true;
+            let name = document.getElementById('name').value;
+            let address = document.getElementById('address').value;
+            let options = document.querySelectorAll('#rules option:checked');
+            let rules = Array.from(options).map(option => option.value);
+            if (name === '') {
+                valid = false;
+                alert("Пожалуйста заполните поле \"Название\"");
+            }
+            if (address === '') {
+                valid = false;
+                alert("Пожалуйста заполните поле \"Адрес\"");
+            }
+            if (rules.length === 0) {
+                valid = false;
+                alert("Пожалуйста заполните поле \"Статьи\"");
+            }
+            return valid;
+        }
+    </script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -37,7 +58,7 @@
         <tr>
             <td>Тип:</td>
             <td>
-                <select name="type.id" >
+                <select name="type.id">
                     <c:forEach var="type" items="${types}">
                         <option value="${type.id}">${type.name}</option>
                     </c:forEach>

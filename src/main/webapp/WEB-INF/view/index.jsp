@@ -28,6 +28,9 @@
             <div class="card-header">
                 Автокатастрофы
             </div>
+            <div>
+                Login as : ${user.username}
+            </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
