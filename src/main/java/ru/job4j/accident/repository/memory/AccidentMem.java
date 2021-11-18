@@ -1,8 +1,7 @@
-package ru.job4j.accident.repository;
+package ru.job4j.accident.repository.memory;
 
-import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.AccidentType;
-import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.model.*;
+import ru.job4j.accident.repository.Storage;
 
 import java.util.*;
 
@@ -55,6 +54,21 @@ public class AccidentMem implements Storage {
     @Override
     public AccidentType getAccidentTypeById(int id) {
         return accidentTypes.get(id);
+    }
+
+    @Override
+    public User saveUser(User user) {
+        return null;
+    }
+
+    @Override
+    public Authority findByAuthority(String authority) {
+        return null;
+    }
+
+    @Override
+    public User findUserByUserName(String username) {
+        return null;
     }
 
     private void fillTestAccidents() {

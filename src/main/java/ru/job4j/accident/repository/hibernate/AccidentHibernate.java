@@ -1,11 +1,10 @@
-package ru.job4j.accident.repository;
+package ru.job4j.accident.repository.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.AccidentType;
-import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.model.*;
+import ru.job4j.accident.repository.Storage;
 
 import java.util.Collection;
 import java.util.function.Consumer;
@@ -67,6 +66,21 @@ public class AccidentHibernate implements Storage {
                         .setParameter("accidentTypeId", id)
                         .uniqueResult()
         );
+    }
+
+    @Override
+    public User saveUser(User user) {
+        return null;
+    }
+
+    @Override
+    public Authority findByAuthority(String authority) {
+        return null;
+    }
+
+    @Override
+    public User findUserByUserName(String username) {
+        return null;
     }
 
     private <T> T tx(final Function<Session, T> command) {

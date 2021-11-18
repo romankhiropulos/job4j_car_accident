@@ -1,9 +1,8 @@
-package ru.job4j.accident.repository;
+package ru.job4j.accident.repository.springdata;
 
 import org.springframework.stereotype.Repository;
-import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.AccidentType;
-import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.model.*;
+import ru.job4j.accident.repository.Storage;
 
 import java.util.Collection;
 
@@ -16,12 +15,20 @@ public class AccidentSpringData implements Storage {
 
     private final RuleDataJPA ruleDataJPA;
 
+    private final AuthorityDataJPA authorityDataJPA;
+
+    private final UserDataJPA userDataJPA;
+
     public AccidentSpringData(AccidentDataJPA accidentDataJPA,
                               AccidentTypeDataJPA accidentTypeDataJPA,
-                              RuleDataJPA ruleDataJPA) {
+                              RuleDataJPA ruleDataJPA,
+                              AuthorityDataJPA authorityDataJPA,
+                              UserDataJPA userDataJPA) {
         this.accidentDataJPA = accidentDataJPA;
         this.accidentTypeDataJPA = accidentTypeDataJPA;
         this.ruleDataJPA = ruleDataJPA;
+        this.authorityDataJPA = authorityDataJPA;
+        this.userDataJPA = userDataJPA;
     }
 
     @Override
@@ -52,5 +59,20 @@ public class AccidentSpringData implements Storage {
     @Override
     public AccidentType getAccidentTypeById(int id) {
         return accidentTypeDataJPA.findById(id).isPresent() ? accidentTypeDataJPA.findById(id).get() : null;
+    }
+
+    @Override
+    public User saveUser(User user) {
+        return userDataJPA.save(user);
+    }
+
+    @Override
+    public Authority findByAuthority(String authority) {
+        return authorityDataJPA.findByAuthority(authority);
+    }
+
+    @Override
+    public User findUserByUserName(String username) {
+        return userDataJPA.findByUsername(username);
     }
 }

@@ -20,16 +20,26 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Accident</title>
+
+    <style>
+        .leftstr, .rightstr {
+            float: left; /* Обтекание справа */
+            width: 50%; /* Ширина текстового блока */
+        }
+
+        .rightstr {
+            text-align: right; /* Выравнивание по правому краю */
+        }
+    </style>
 </head>
 <body>
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Автокатастрофы
-            </div>
-            <div>
-                Login as : ${user.username}
+                <p class="leftstr" style="font-size: 150%;">Автокатастрофы</p>
+                <p class="rightstr">Login as : ${user.username}</p>
+                <div style="clear: left"></div>
             </div>
             <div class="card-body">
                 <table class="table">
@@ -37,7 +47,7 @@
                     <%--                <tr>--%>
                     <%--                    <th scope="col">Названия</th>--%>
                     <%--                </tr>--%>
-                        <a href="<c:url value='/create'/>">Добавить инцидент</a>
+                    <a href="<c:url value='/create'/>">Добавить инцидент</a>
                     </thead>
                     <tbody>
                     <br>

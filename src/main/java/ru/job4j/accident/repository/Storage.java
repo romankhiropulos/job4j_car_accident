@@ -1,8 +1,6 @@
 package ru.job4j.accident.repository;
 
-import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.AccidentType;
-import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.model.*;
 
 import java.util.Collection;
 
@@ -19,4 +17,10 @@ public interface Storage {
     Accident getAccidentById(int id);
 
     AccidentType getAccidentTypeById(int id);
+
+    User saveUser(User user);
+
+    Authority findByAuthority(String authorityRoleName);
+
+    User findUserByUserName(String username);
 }

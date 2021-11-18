@@ -1,12 +1,11 @@
-package ru.job4j.accident.repository;
+package ru.job4j.accident.repository.springjdbc;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.AccidentType;
-import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.model.*;
+import ru.job4j.accident.repository.Storage;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -153,6 +152,21 @@ public class AccidentJdbcTemplate implements Storage {
                 accidentTypeRowMapper,
                 id
         );
+    }
+
+    @Override
+    public User saveUser(User user) {
+        return null;
+    }
+
+    @Override
+    public Authority findByAuthority(String authority) {
+        return null;
+    }
+
+    @Override
+    public User findUserByUserName(String username) {
+        return null;
     }
 
     private List<Rule> getRulesForAccident(int accidentId) {
